@@ -12,3 +12,5 @@ chrome.storage.sync.get(["name"], (res) => {
   console.log(res)
   nameInput.value = res.name ?? "???"
 })
+
+// console.log(this);
