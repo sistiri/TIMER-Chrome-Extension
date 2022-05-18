@@ -2,5 +2,13 @@ const nameInput = document.getElementById('name-input')
 const saveBtn = document.getElementById('save-btn')
 
 saveBtn.addEventListener("click", () => {
-  console.log(nameInput.value)
+  const name = nameInput.value
+  chrome.storage.sync.set({
+    name,
+  }, () => { console.log(`Name is set to ${name}`) })
+})
+
+chrome.storage.sync.get(["name"], (res) => {
+  console.log(res)
+  nameInput.value = res.name ?? "???"
 })
