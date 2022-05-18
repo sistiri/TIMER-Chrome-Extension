@@ -1,5 +1,5 @@
 // console.log('Hello from background script');
-// console.log(this);
+console.log(this);
 
 chrome.alarms.create({
   periodInMinutes: 1 / 60,
@@ -13,6 +13,11 @@ chrome.alarms.onAlarm.addListener((alarm) => {
     })
     chrome.action.setBadgeText({
       text: `${time + 1}`
+    })
+    if(time % 2000 == 0)
+    this.registration.showNotification("Chrome Timer Extension", {
+      body: "20 second has passed!",
+      icon: "icon.png"
     })
   })
 })
